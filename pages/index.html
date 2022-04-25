@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotions </title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="static/style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+    <center>
+        <div class="header">
+            <h1>Siddaganga Institute of Technology</h1>
+            <h2>Information Science And Engineering</h2>
+        </div>
+
+        <table>
+            <tr>
+                <td><a id="index" href="read"><i class="fa fa-microphone mic " style="font-size:48px;color:red "></i></a></td>
+            </tr>
+        </table>
+        <div class="inp" style="width: 85%;margin-left: 5%; ">
+            <div id="container"></div>
+        </div>
+
+        <div class="footer">
+            <hr>
+
+            <h3>Please Don't Refersh the Pages</h3>
+
+            <hr>
+            <p>Siddaganga Institute of Technology ©</p>
+        </div>
+    </center>
+
+
+
+</body>
+
+</html>
+
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 55, 55, 0.438);
+        color: white;
+        text-align: center;
+    }
+    
+    .inp {
+        font-size: 25px;
+    }
+    
+    .mic {
+        padding: 25px;
+        margin: 25px;
+    }
+    
+    .header {
+        text-align: center;
+        background: rgb(42, 42, 46);
+        color: rgb(197, 192, 192);
+        font-size: 20px;
+        padding: 15px;
+        position: sticky;
+    }
+    
+    .mic:hover {
+        border-radius: 50px;
+    }
+    
+    .mic:hover,
+    .flex-container:hover,
+    .flex-item-left:hover,
+    .flex-item-right:hover {
+        box-shadow: 0px 5px 50px 5px #000000;
+        background-color: rgba(33, 39, 44, 0.589);
+    }
+    
+    body {
+        font-family: 'Trebuchet MS', sans-serif;
+        color: rgb(212, 211, 211);
+        background-color: rgb(27, 27, 37);
+        padding: 15px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 102px;
+    }
+    
+    #column {
+        float: left;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 25px;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .container1 {
+        flex-wrap: wrap;
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .flex-item-left {
+        background-color: rgb(33, 39, 44);
+        padding: 10px;
+        flex: 25%;
+        height: auto;
+        min-height: 15vh;
+        margin: 5px;
+    }
+    
+    .flex-item-right {
+        background-color: rgb(33, 39, 44);
+        padding: 10px;
+        margin: 5px;
+        flex: 25%;
+        height: auto;
+    }
+    /* Responsive layout - makes a one column-layout instead of a two-column layout */
+    
+    @media (max-width: 800px) {
+        .flex-item-right,
+        .flex-item-left {
+            flex: 100%;
+        }
+    }
+    
+    .mar {
+        margin-top: 150px;
+    }
+    
+    #header {
+        padding: 2px 1px;
+        text-align: center;
+        font-size: 2px;
+        font-weight: bold;
+        top: 0;
+        width: 97%;
+        transition: 0.1s;
+        background-color: rgb(12, 12, 14);
+        margin: 15px;
+    }
+    
+    #emoji {
+        font-size: 170px;
+    }
+    
+    #emojititle {
+        font-size: 30px;
+    }
+    
+    #container {
+        display: block;
+        visibility: hidden;
+    }
+</style>
+
+<script>
+    // When the user scrolls down 50px from the top of the document, resize the header's font size
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 200) {
+            document.getElementById("header").style.fontSize = "5px";
+            document.getElementById("header").style.position = "fixed";
+            document.getElementById("header").style.float = "left";
+        } else {
+            document.getElementById("header").style.fontSize = "9px";
+            document.getElementById("header").style.position = "unset";
+            document.getElementById("header").style.padding = "unset";
+        }
+    }
+
+
+    var arr = ["&#128578", "&#128522", "&#128514", "&#128557", "&#128545", "&#128552", "&#128556", "&#128558"];
+    var exp = ["Neutral", "Calm", "Happy", "Sad", "Angry", "Fearful", "Disgust", "Surprised"]
+    var delay = 2000; //2 seconds
+    // 1. Neutral < br > 2. Calm < br > 3. Happy < br > 4. Sad < br > 5. Angry < br > 6. Fearful < br > 7. Disgust < br > 8. Surprised
+    for (var i = 0; i < 8; i++) {
+
+        setTimeout(function(index) {
+            $('#emoji').html('<span> ' + arr[index] + ' </span>');
+            $('#emojititle').html('<span> ' + exp[index] + ' </span> ');
+
+        }, delay * i, i)
+    };
+    $('#voice').click(function() {
+        // alert('5');
+        var voice = document.getElementById('container');
+        if (voice.style.visibility == "visible") {
+            voice.style.visibility = 'hidden';
+        } else {
+            voice.style.visibility = 'visible';
+        }
+    });
+
+    class WaveCurve {
+        constructor(opt) {
+            this.opt = opt || {};
+            this.controller = opt.controller;
+            this.color = opt.color;
+            this.tick = 0;
+
+            this.respawn = this.respawn.bind(this);
+            this.equation = this.equation.bind(this);
+            this.drawAlt = this.equation.bind(this);
+            this.draw = this.draw.bind(this);
+
+            this.respawn();
+        }
+
+        respawn() {
+            this.amplitude = 0.3 + (Math.random() * 0.7);
+            this.seed = Math.random();
+            this.open_class = 2 + (Math.random() * 3) || 0;
+        }
+
+        equation(i) {
+            const p = this.tick;
+            const y = (-1 * Math.abs(Math.sin(p))) *
+                (this.controller.amplitude * this.amplitude) *
+                this.controller.MAX * (1 / ((1 + ((this.open_class * i) ** 2)) ** 2));
+            if (Math.abs(y) < 0.001) {
+                this.respawn();
+            }
+            return y;
+        }
+
+        dram(m) {
+            this.tick += this.controller.speed * (1 - (0.5 * Math.sin(this.seed * Math.PI)));
+            const ctx = this.controller.ctx;
+            ctx.beginPath();
+            const xBase = (this.controller.width / 2) +
+                ((-this.controller.width / 4) +
+                    (this.seed * (this.controller.width / 2)));
+            const yBase = this.controller.height / 2;
+            let x;
+            let y;
+            let xInit;
+            let i = -3;
+            while (i <= 3) {
+                x = xBase + ((i * this.controller.width) / 4);
+                y = yBase + (m * this.equation(i));
+                xInit = xInit || x;
+                ctx.lineTo(x, y);
+                i += 0.01;
+            }
+            const h = Math.abs(this.equation(0));
+            const gradient = ctx.createRadialGradient(xBase, yBase, h * 1.15, xBase, yBase, h * 0.3);
+            gradient.addColorStop(0, `rgba(${this.color.join(',')},0.4)`);
+            gradient.addColorStop(1, `rgba(${this.color.join(',')},0.2)`);
+            ctx.fillStyle = gradient;
+            ctx.lineTo(xInit, yBase);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        draw() {
+            this.dram(-1);
+            this.dram(1);
+        }
+    }
+
+    class VoiceWaves {
+        constructor(opt) {
+            this.opt = opt || {};
+            this.tick = 0;
+            this.run = false;
+            // UI vars
+            this.ratio = this.opt.ratio || window.devicePixelRatio || 1;
+            this.width = this.ratio * (this.opt.width || 320);
+            this.height = this.ratio * (this.opt.height || 100);
+            this.MAX = this.height / 2;
+            this.speed = 0.1;
+            this.amplitude = this.opt.amplitude || 1;
+            // Canvas
+            this.canvas = document.createElement('canvas');
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+            this.canvas.style.width = `${this.width / this.ratio}px`;
+            this.canvas.style.height = `${this.height / this.ratio}px`;
+            this.container = this.opt.container || document.body;
+            this.container.appendChild(this.canvas);
+            this.ctx = this.canvas.getContext('2d');
+            // Create curves
+            this.curves = [];
+            // Colors
+            this.colors = [
+                [32, 133, 252],
+                [94, 252, 169],
+                [253, 71, 103],
+            ];
+
+            this.init = this.init.bind(this);
+            this.clear = this.clear.bind(this);
+            this.draw = this.draw.bind(this);
+            this.start = this.start.bind(this);
+            this.stop = this.stop.bind(this);
+
+            this.init();
+        }
+
+        init() {
+            const vm = this;
+            for (let i = 0; i < vm.colors.length; i += 1) {
+                const color = vm.colors[i];
+                for (let j = 0; j < (3 * Math.random()) || 0; j += 1) {
+                    vm.curves.push(new WaveCurve({
+                        controller: vm,
+                        color,
+                    }));
+                }
+            }
+            if (vm.opt.autostart) {
+                vm.start();
+            }
+        }
+
+        clear() {
+            this.ctx.globalCompositeOperation = 'destination-out';
+            this.ctx.fillRect(0, 0, this.width, this.height);
+            this.ctx.globalCompositeOperation = 'lighter';
+        }
+
+        draw() {
+            if (this.run === false) return;
+            this.clear();
+            const len = this.curves.length;
+            for (let i = 0; i < len; i += 1) {
+                this.curves[i].draw();
+            }
+            requestAnimationFrame(this.draw.bind(this));
+        }
+
+        start() {
+            this.tick = 0;
+            this.run = true;
+            this.draw();
+        }
+
+        stop() {
+            this.tick = 0;
+            this.run = false;
+        }
+    }
+
+    let container = document.querySelector('#container');
+
+    let opt = {
+        width: 150,
+        height: 50,
+        speed: 0.2,
+        amplitude: 1,
+        container: container,
+        autostart: true,
+    }
+    let voicewaves = new VoiceWaves(opt);
+</script>
+
+
+
+
+<style>
+    .hwrap {
+        overflow: hidden;
+        width: 100%;
+        padding: 15px;
+        margin: 15px;
+        font-size: 30px;
+        max-width: fit-content;
+        /* HIDE SCROLL BAR */
+    }
+    
+    .hmove {
+        display: flex;
+    }
+    
+    .hitem {
+        flex-shrink: 0;
+        width: 100%;
+        height: 15px;
+        padding: 1px;
+        text-align: center;
+        margin: 20px;
+    }
+    /* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+    /* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+    
+    @keyframes tickerh {
+        0% {
+            transform: translate3d(100%, 0, 0);
+        }
+        100% {
+            transform: translate3d(-200%, 0, 0);
+        }
+    }
+    
+    .hmove {
+        animation: tickerh 30s infinite;
+    }
+    
+    .hmove:hover {
+        animation-play-state: paused;
+    }
+</style>
