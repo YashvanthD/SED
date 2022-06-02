@@ -1,6 +1,6 @@
 tensorflow
 keras
-django-admin
+django
 sklearn
 keras
 librosa
