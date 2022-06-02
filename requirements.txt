@@ -1,7 +1,6 @@
 tensorflow
 keras
 django
-sklearn
 keras
 librosa
 pandas
