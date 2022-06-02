@@ -64,7 +64,6 @@ google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 graphviz==0.20
 greenlet==0.4.15
-grpcio==1.44.0
 h5py==2.9.0
 heapdict==1.0.0
 html5lib==1.0.1
