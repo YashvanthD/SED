@@ -1,7 +1,6 @@
 tensorflow
 keras
 django-admin
-pyaudio
 sklearn
 keras
 librosa
