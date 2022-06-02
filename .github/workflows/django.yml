@@ -26,6 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install django-admin
-    - name: Run Tests
+    - name: Run 
       run: |
         python manage.py runserver 
