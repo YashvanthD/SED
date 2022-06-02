@@ -55,7 +55,6 @@ filelock==3.0.10
 Flask==1.0.2
 Flask-MySQLdb==1.0.1
 flatbuffers==2.0
-future==0.17.1
 gevent==1.4.0
 glob2==0.6
 google-auth==2.6.6
